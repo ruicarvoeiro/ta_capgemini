@@ -5,8 +5,6 @@
  */
 package projecto;
 
-import java.util.List;
-
 /**
  *
  * @author CLAISA
@@ -23,16 +21,11 @@ public class Main extends javax.swing.JFrame {
         File f = new File();
         f.readJSONFile();
         
-       List<Colaborador> listaColaboradores = f.listaColaboradores;
-
-        for(Colaborador c : listaColaboradores){
-            System.out.println(c.getNomeColaborador());
-            List<Meeting> lMeet = c.getListMeeting();
-            
-            for(Meeting m : lMeet){
-                System.out.println(m.getDescricaoEvento());
-            }
-        }    
+        
+        
+        //System.out.println(f.listaColaboradores.size());
+        
+        
     }
 
     /**
@@ -44,21 +37,117 @@ public class Main extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jFrame1 = new javax.swing.JFrame();
+        OrganizerPanel1 = new javax.swing.JPanel();
+        meetingsButton = new javax.swing.JButton();
+        appointmentsButton = new javax.swing.JButton();
+        organizerPanel = new javax.swing.JPanel();
+        meetingsjButton = new javax.swing.JButton();
+        appointmentsJButton = new javax.swing.JButton();
+
+        jFrame1.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        OrganizerPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Painel do Organizador", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
+
+        meetingsButton.setText("Meetings");
+        meetingsButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                meetingsButtonActionPerformed(evt);
+            }
+        });
+
+        appointmentsButton.setText("Appointments");
+
+        javax.swing.GroupLayout OrganizerPanel1Layout = new javax.swing.GroupLayout(OrganizerPanel1);
+        OrganizerPanel1.setLayout(OrganizerPanel1Layout);
+        OrganizerPanel1Layout.setHorizontalGroup(
+            OrganizerPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(OrganizerPanel1Layout.createSequentialGroup()
+                .addGap(191, 191, 191)
+                .addGroup(OrganizerPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(meetingsButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(appointmentsButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(191, Short.MAX_VALUE))
+        );
+        OrganizerPanel1Layout.setVerticalGroup(
+            OrganizerPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(OrganizerPanel1Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(meetingsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(appointmentsButton)
+                .addContainerGap(31, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
+        jFrame1.getContentPane().setLayout(jFrame1Layout);
+        jFrame1Layout.setHorizontalGroup(
+            jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jFrame1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(OrganizerPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jFrame1Layout.setVerticalGroup(
+            jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jFrame1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(OrganizerPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        organizerPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Painel do Organizador", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
+
+        meetingsjButton.setText("Meetings");
+
+        appointmentsJButton.setText("Appointments");
+
+        javax.swing.GroupLayout organizerPanelLayout = new javax.swing.GroupLayout(organizerPanel);
+        organizerPanel.setLayout(organizerPanelLayout);
+        organizerPanelLayout.setHorizontalGroup(
+            organizerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(organizerPanelLayout.createSequentialGroup()
+                .addGap(232, 232, 232)
+                .addGroup(organizerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(meetingsjButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(appointmentsJButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(230, Short.MAX_VALUE))
+        );
+        organizerPanelLayout.setVerticalGroup(
+            organizerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(organizerPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(meetingsjButton, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(appointmentsJButton)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(organizerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(organizerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void meetingsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_meetingsButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_meetingsButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -86,6 +175,9 @@ public class Main extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -96,5 +188,12 @@ public class Main extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel OrganizerPanel1;
+    private javax.swing.JButton appointmentsButton;
+    private javax.swing.JButton appointmentsJButton;
+    private javax.swing.JFrame jFrame1;
+    private javax.swing.JButton meetingsButton;
+    private javax.swing.JButton meetingsjButton;
+    private javax.swing.JPanel organizerPanel;
     // End of variables declaration//GEN-END:variables
 }
