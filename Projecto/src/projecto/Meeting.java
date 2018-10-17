@@ -17,7 +17,7 @@ import java.util.List;
  */
 public class Meeting extends Eventos {
     
-    private List<Participante> listaParticipantes = new ArrayList<>();
+    private List<Colaborador> listaParticipantes = new ArrayList<>();
 
     public Meeting(int idEvento, String descricaoEvento, Date dataEvento, Time horaEvento, String local) {
         super(idEvento, descricaoEvento, dataEvento, horaEvento, local);

@@ -5,27 +5,38 @@
  */
 package projecto;
 
+import java.util.List;
+
 /**
  *
  * @author CLAISA
  */
-public class Main extends javax.swing.JFrame {
+public class PainelOrganizador extends javax.swing.JFrame {
 
     /**
      * Creates new form Main
      */
+    File f = new File();
     CatalagoColaboradores cat;
-    public Main() {
+    public PainelOrganizador() {
         initComponents();
         
-        File f = new File();
+        
         f.readJSONFile();
-        
-        
-        
+
         //System.out.println(f.listaColaboradores.size());
         
         
+    }
+    public Colaborador getColaboradorByNum(int n ){
+        List<Colaborador> listaColaborador = f.listaColaboradores;
+        Colaborador col = null;
+        for(Colaborador c: listaColaborador){
+            if(c.getNumeroColaborador() == n){
+                col = c;
+            }
+        }
+        return col;
     }
 
     /**
@@ -44,6 +55,7 @@ public class Main extends javax.swing.JFrame {
         organizerPanel = new javax.swing.JPanel();
         meetingsjButton = new javax.swing.JButton();
         appointmentsJButton = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         jFrame1.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -101,8 +113,25 @@ public class Main extends javax.swing.JFrame {
         organizerPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Painel do Organizador", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
 
         meetingsjButton.setText("Meetings");
+        meetingsjButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                meetingsjButtonActionPerformed(evt);
+            }
+        });
 
         appointmentsJButton.setText("Appointments");
+        appointmentsJButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                appointmentsJButtonActionPerformed(evt);
+            }
+        });
+
+        jButton1.setText("Voltar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout organizerPanelLayout = new javax.swing.GroupLayout(organizerPanel);
         organizerPanel.setLayout(organizerPanelLayout);
@@ -114,11 +143,16 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(meetingsjButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(appointmentsJButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(230, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, organizerPanelLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jButton1))
         );
         organizerPanelLayout.setVerticalGroup(
             organizerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(organizerPanelLayout.createSequentialGroup()
                 .addContainerGap()
+                .addComponent(jButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(meetingsjButton, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(appointmentsJButton)
@@ -149,6 +183,24 @@ public class Main extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_meetingsButtonActionPerformed
 
+    private void meetingsjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_meetingsjButtonActionPerformed
+        MeetingsOrganizer c = new MeetingsOrganizer();
+                c.setVisible(true);
+                this.setVisible(false);
+    }//GEN-LAST:event_meetingsjButtonActionPerformed
+
+    private void appointmentsJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_appointmentsJButtonActionPerformed
+        PesquisaAppointmentOrganizador c = new PesquisaAppointmentOrganizador();
+                c.setVisible(true);
+                this.setVisible(false);
+    }//GEN-LAST:event_appointmentsJButtonActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        Index c = new Index();
+                c.setVisible(true);
+                this.setVisible(false);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -166,14 +218,26 @@ public class Main extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PainelOrganizador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PainelOrganizador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PainelOrganizador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PainelOrganizador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -182,7 +246,7 @@ public class Main extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Main().setVisible(true);
+                new PainelOrganizador().setVisible(true);
             }
         });
     }
@@ -191,6 +255,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPanel OrganizerPanel1;
     private javax.swing.JButton appointmentsButton;
     private javax.swing.JButton appointmentsJButton;
+    private javax.swing.JButton jButton1;
     private javax.swing.JFrame jFrame1;
     private javax.swing.JButton meetingsButton;
     private javax.swing.JButton meetingsjButton;
