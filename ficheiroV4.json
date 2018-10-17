@@ -1,4 +1,4 @@
-{/
+{
   "listaColaboradores": [
     {
       "colaborador": {
@@ -10,7 +10,7 @@
           {
             "meeting": {
               "idEvento": "0",
-              "descricaoEvento": "Reuni„o com Orientador",
+              "descricaoEvento": "Reuni√£o com Orientador",
               "dataEvento": "2018-05-23",
               "horaEvento": "15:00:00",
               "local": "Sala 5",
@@ -38,14 +38,14 @@
     {
       "colaborador": {
         "numero": "2",
-        "nome": "InÍs",
+        "nome": "In√™s",
         "apelido": "Ramos",
         "enderecoEmail": "ines.ramos@capgemini.com",
         "listaEventos": [
           {
             "meeting": {
               "idEvento": "2",
-              "descricaoEvento": "Reuni„o de Projecto",
+              "descricaoEvento": "Reuni√£o de Projecto",
               "dataEvento": "2018-05-23",
               "horaEvento": "15:00:00",
               "local": "Sala 5",
@@ -58,7 +58,7 @@
           {
             "appointement": {
               "idEvento": "3",
-              "descricaoEvento": "Alterar relogio para hor·rio de Ver„o",
+              "descricaoEvento": "Alterar relogio para hor√°rio de Ver√£o",
               "dataEvento": "2018-05-29",
               "horaEvento": "15:00:00",
               "local": "",
