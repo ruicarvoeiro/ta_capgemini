@@ -170,6 +170,11 @@ public class File {
         
     }
     public void trataParticipantes(JSONObject part, Meeting meeting){
-            //System.out.println(part);
+            
+            JSONObject cadaParticipante = (JSONObject) part.get("participante");
+            //System.out.println(cadaParticipante);
+            String strNumero = (String) cadaParticipante.get("numero");
+            int numero = Integer.parseInt(strNumero);
+            
     }
 }
