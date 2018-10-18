@@ -52,13 +52,13 @@ public class MeetingsParticipante extends javax.swing.JFrame {
 
         jTableMeetings.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Id Evento", "Descrição", "Data", "Hora", "Local", "Parts"
+                "Descrição", "Data", "Hora", "Local", "Participantes"
             }
         ));
         jScrollPane1.setViewportView(jTableMeetings);
@@ -109,7 +109,7 @@ public class MeetingsParticipante extends javax.swing.JFrame {
                     .addComponent(jButtonPesquisarMeetings))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(222, Short.MAX_VALUE))
+                .addContainerGap(234, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -155,14 +155,26 @@ public class MeetingsParticipante extends javax.swing.JFrame {
             listaMeetings = c.getListMeeting();
             if(listaMeetings.size()!=0){
              for(Meeting met : listaMeetings){
-                //met.getParticipantes();
+                List<Integer> lc = met.getListaParticipantes();
+                   // System.out.println(met.getDescricaoEvento()+"tamanho lista: " + lc.size());
+                    StringBuilder sb = new StringBuilder();
+                    String s = null;
+                    for(Integer co : lc){
+                        Colaborador cola = m.getColaboradorByNum(co);
+                        sb.append(cola.getNomeColaborador()+" nº"+cola.getNumeroColaborador());
+                        sb.append(",");
+                        
+                    }     
+                    sb.deleteCharAt(sb.length() - 1);
+                    s = sb.toString();
              Object [] ob = new Object[5];
-             ob[0] = met.getIdEvento();
-             ob[1] = met.getDescricaoEvento();
-             ob[2] = met.getDataEvento();
-             ob[3] = met.getHoraEvento();
-             ob[4] = met.getLocal();
-             
+            // ob[0] = met.getIdEvento();
+             ob[0] = met.getDescricaoEvento();
+             ob[1] = met.getDataEvento();
+             ob[2] = met.getHoraEvento();
+             ob[3] = met.getLocal();
+             if(s!= null)
+                        ob[4] = s;
              tableModel.addRow(ob);
             
             

@@ -17,6 +17,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.util.Pair;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -32,7 +33,8 @@ public class File {
     JSONParser jsonParser = new JSONParser();
     private static final String caminho = "C:\\Users\\claisa\\Desktop\\ficheiroV4.json";
     List<Colaborador> listaColaboradores = new ArrayList<Colaborador>();
-    List<Meeting> listaMeeting = new ArrayList<Meeting>();
+    //List<Meeting> listaMeeting = new ArrayList<Meeting>();
+    
     
 
     public void readJSONFile() {
@@ -93,7 +95,7 @@ public class File {
     }
 
     private void criaEvento(Colaborador criaC, JSONObject evento) throws java.text.ParseException {
-
+        
         // System.out.println(evento);
         JSONObject appoint = (JSONObject) evento.get("appointement");
         JSONObject meeting = (JSONObject) evento.get("meeting");
@@ -148,33 +150,28 @@ public class File {
             
             //participantess
         JSONArray listPar = (JSONArray) meeting.get("participantes");
-        
+            System.out.println(listPar);
         for (int i = 0; i < listPar.size(); i++) {
-                JSONObject participante = (JSONObject) listPar.get(i);
-                
-              //  int n = Integer.parseInt((String)participante.get("numero"));
-               
-                //System.out.println(participante);
-                //System.out.print(i);
-                trataParticipantes(participante, metee);
-            }
             
+                JSONObject participantes = (JSONObject) listPar.get(i);          
+                trataParticipantes(participantes, metee);
+            }
+    
         }
    
     }
-    public List<Meeting> retornaMeeting(int n){
-        
-        
-        
-        return listaMeeting;
-        
-    }
+    
     public void trataParticipantes(JSONObject part, Meeting meeting){
             
             JSONObject cadaParticipante = (JSONObject) part.get("participante");
-            //System.out.println(cadaParticipante);
+          // System.out.println(cadaParticipante);
             String strNumero = (String) cadaParticipante.get("numero");
             int numero = Integer.parseInt(strNumero);
+            
+            //ir buscar o colaborador com o numero = numero
+  
+                meeting.addParticipante(numero);
+         
             
     }
 }

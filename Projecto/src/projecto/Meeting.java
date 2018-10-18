@@ -17,14 +17,26 @@ import java.util.List;
  */
 public class Meeting extends Eventos {
     
-    private List<Colaborador> listaParticipantes = new ArrayList<>();
+    private List<Integer> listaParticipantes = new ArrayList<Integer>();
 
     public Meeting(int idEvento, String descricaoEvento, Date dataEvento, Time horaEvento, String local) {
         super(idEvento, descricaoEvento, dataEvento, horaEvento, local);
     }
 
-    public void addParticipante(Participante par){
+    public void addParticipante(int par){
         listaParticipantes.add(par);
     }
 
+    public List<Integer> getListaParticipantes(){
+        return listaParticipantes;
+    }
+    
+    public void eliminarParticipante(int par){
+        int auxiliar = 0;
+        for(int i = 0; i<listaParticipantes.size(); i++){
+            if(listaParticipantes.get(i) == par)
+            auxiliar = i;
+        }
+        listaParticipantes.remove(auxiliar);
+    }
 }
