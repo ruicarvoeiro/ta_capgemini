@@ -37,6 +37,7 @@ public class MeetingsOrganizer extends javax.swing.JFrame {
         jTableMeetings = new javax.swing.JTable();
         jButtonPesquisarMeetings = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        jButtonEliminar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -52,13 +53,13 @@ public class MeetingsOrganizer extends javax.swing.JFrame {
 
         jTableMeetings.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Id Evento", "Descrição", "Data", "Hora", "Local"
+                "Id Evento", "Descrição", "Data", "Hora", "Local", "Parts"
             }
         ));
         jScrollPane1.setViewportView(jTableMeetings);
@@ -77,6 +78,13 @@ public class MeetingsOrganizer extends javax.swing.JFrame {
             }
         });
 
+        jButtonEliminar.setText("Editar Meeting");
+        jButtonEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEliminarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout MeetingsAreaPanelLayout = new javax.swing.GroupLayout(MeetingsAreaPanel);
         MeetingsAreaPanel.setLayout(MeetingsAreaPanelLayout);
         MeetingsAreaPanelLayout.setHorizontalGroup(
@@ -84,6 +92,7 @@ public class MeetingsOrganizer extends javax.swing.JFrame {
             .addGroup(MeetingsAreaPanelLayout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addGroup(MeetingsAreaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButtonEliminar)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 573, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(MeetingsAreaPanelLayout.createSequentialGroup()
                         .addGap(7, 7, 7)
@@ -109,7 +118,9 @@ public class MeetingsOrganizer extends javax.swing.JFrame {
                     .addComponent(jButtonPesquisarMeetings))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(94, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                .addComponent(jButtonEliminar)
+                .addGap(32, 32, 32))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -160,13 +171,26 @@ public class MeetingsOrganizer extends javax.swing.JFrame {
             listaMeetings = c.getListMeeting();
             if(listaMeetings.size()!=0){
                 for(Meeting met : listaMeetings){
-                    Object [] ob = new Object[5];
+                    List<Integer> lc = met.getListaParticipantes();
+                   // System.out.println(met.getDescricaoEvento()+"tamanho lista: " + lc.size());
+                    StringBuilder sb = new StringBuilder();
+                    String s = null;
+                    for(Integer co : lc){
+                        Colaborador cola = m.getColaboradorByNum(co);
+                        sb.append(cola.getNomeColaborador()+" nº"+cola.getNumeroColaborador());
+                        sb.append(",");
+                        
+                    }     
+                    sb.deleteCharAt(sb.length() - 1);
+                    s = sb.toString();
+                    Object [] ob = new Object[6];
                     ob[0] = met.getIdEvento();
                     ob[1] = met.getDescricaoEvento();
                     ob[2] = met.getDataEvento();
                     ob[3] = met.getHoraEvento();
                     ob[4] = met.getLocal();
-
+                    if(s!= null)
+                        ob[5] = s;
                     tableModel.addRow(ob);
 
                 }
@@ -179,6 +203,12 @@ public class MeetingsOrganizer extends javax.swing.JFrame {
 
         }
     }//GEN-LAST:event_jButtonPesquisarMeetingsActionPerformed
+
+    private void jButtonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEliminarActionPerformed
+        EditarMeeting p = new EditarMeeting();
+        p.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jButtonEliminarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -225,6 +255,7 @@ public class MeetingsOrganizer extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel MeetingsAreaPanel;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButtonEliminar;
     private javax.swing.JButton jButtonPesquisarMeetings;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableMeetings;

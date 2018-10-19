@@ -37,6 +37,7 @@ public class PesquisaAppointmentOrganizador extends javax.swing.JFrame {
         appointmentsTable = new javax.swing.JTable();
         jButtonPesquisarAppointement = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        jButtonEditarApp = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -77,6 +78,13 @@ public class PesquisaAppointmentOrganizador extends javax.swing.JFrame {
             }
         });
 
+        jButtonEditarApp.setText("Editar Appointment");
+        jButtonEditarApp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEditarAppActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pesquisarAppointmentPanelLayout = new javax.swing.GroupLayout(pesquisarAppointmentPanel);
         pesquisarAppointmentPanel.setLayout(pesquisarAppointmentPanelLayout);
         pesquisarAppointmentPanelLayout.setHorizontalGroup(
@@ -84,16 +92,20 @@ public class PesquisaAppointmentOrganizador extends javax.swing.JFrame {
             .addGroup(pesquisarAppointmentPanelLayout.createSequentialGroup()
                 .addGroup(pesquisarAppointmentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pesquisarAppointmentPanelLayout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 490, Short.MAX_VALUE))
-                    .addGroup(pesquisarAppointmentPanelLayout.createSequentialGroup()
                         .addGap(54, 54, 54)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(numeroColaboradorTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jButtonPesquisarAppointement)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(pesquisarAppointmentPanelLayout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addGroup(pesquisarAppointmentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pesquisarAppointmentPanelLayout.createSequentialGroup()
+                                .addComponent(jButtonEditarApp)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 490, Short.MAX_VALUE))))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pesquisarAppointmentPanelLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
@@ -111,7 +123,9 @@ public class PesquisaAppointmentOrganizador extends javax.swing.JFrame {
                     .addComponent(jButtonPesquisarAppointement))
                 .addGap(17, 17, 17)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                .addComponent(jButtonEditarApp)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -176,6 +190,12 @@ public class PesquisaAppointmentOrganizador extends javax.swing.JFrame {
                 this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jButtonEditarAppActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditarAppActionPerformed
+       EditarAppoint e = new EditarAppoint();
+       e.setVisible(true);
+       this.setVisible(false);
+    }//GEN-LAST:event_jButtonEditarAppActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -229,6 +249,7 @@ public class PesquisaAppointmentOrganizador extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable appointmentsTable;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButtonEditarApp;
     private javax.swing.JButton jButtonPesquisarAppointement;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane2;
