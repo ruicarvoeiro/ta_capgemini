@@ -9,6 +9,7 @@ package projecto;
  *
  * @author RCARVOEI
  */
+//
 public class Participante extends Colaborador {
     public Participante(){
         super();

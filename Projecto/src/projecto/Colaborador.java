@@ -21,17 +21,14 @@ public class Colaborador {
     private List<Appointment> listaAppointements = new ArrayList<Appointment>();
     private List<Meeting> listaMeetings = new ArrayList<Meeting>();
     
-    public Colaborador(){};
+    public Colaborador(){
+    };
     
-    public Colaborador(int numeroColaborador, String nomeColaborador, 
-            String apelidoColaborador, String emailColaborador) {
-        
+    public Colaborador(int numeroColaborador, String nomeColaborador, String apelidoColaborador, String emailColaborador) {     
         this.numeroColaborador = numeroColaborador;
         this.nomeColaborador = nomeColaborador;
         this.apelidoColaborador = apelidoColaborador;
-        this.emailColaborador = emailColaborador;
-       
-     
+        this.emailColaborador = emailColaborador;    
 }
 
     public int getNumeroColaborador() {
@@ -65,20 +62,15 @@ public class Colaborador {
     }
     
     
-    public void addA(Appointment a){
-    
-        listaAppointements.add(a);
-         
+    public void addA(Appointment a){    
+        listaAppointements.add(a); 
     }
     public void addM(Meeting m){
-        //System.out.println("Vai adicionar meeting :" + m.getDescricaoEvento() + " a " + this.nomeColaborador);
-     listaMeetings.add(m);
- 
+         listaMeetings.add(m);
     }
 
     
-    public List<Meeting> getListMeeting(){
-    
+    public List<Meeting> getListMeeting(){    
         return this.listaMeetings;
     }
     

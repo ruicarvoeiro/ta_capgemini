@@ -17,15 +17,10 @@ public class CatalagoColaboradores {
     List<Colaborador> listaColaboradores = new ArrayList<Colaborador>();
     
     public void addColaborador(Colaborador c){
-    
         listaColaboradores.add(c);
     }
     
     public List<Colaborador> getListaColaboradores(){
-    
         return listaColaboradores;
-    }
-    
-    
-    
+    } 
 }

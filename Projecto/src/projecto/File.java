@@ -31,26 +31,19 @@ import org.json.simple.parser.ParseException;
 public class File {
 
     JSONParser jsonParser = new JSONParser();
-    private static final String caminho = "C:\\Users\\claisa\\Desktop\\ficheiroV4.json";
-    List<Colaborador> listaColaboradores = new ArrayList<Colaborador>();
-    //List<Meeting> listaMeeting = new ArrayList<Meeting>();
-    
+    private static final String caminho = "D:\\Capgemini\\Projetos\\Mestrinhos em Java\\ta_capgemini\\ficheiroV4.json";
+    List<Colaborador> listaColaboradores = new ArrayList<Colaborador>();  
     
 
     public void readJSONFile() {
-
         try (FileReader reader = new FileReader(caminho)) {
-
             JSONObject root = (JSONObject) jsonParser.parse(reader);
-
+            System.out.println(root);
             JSONArray listaColaboradores = (JSONArray) root.get("listaColaboradores");
-
             for (int i = 0; i < listaColaboradores.size(); i++) {
                 JSONObject lista = (JSONObject) listaColaboradores.get(i);
                 criaColaborador(lista);
             }
-            // catCol.recebeListaColab(listaColaboradores);
-
         } catch (FileNotFoundException ex) {
             Logger.getLogger(File.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException | ParseException ex) {
@@ -59,27 +52,24 @@ public class File {
     }
 
     private void criaColaborador(JSONObject colaborador) {
-
         JSONObject newC = (JSONObject) colaborador.get("colaborador");
-
-        int numero = Integer.parseInt((String) newC.get("numero"));
+        
+        String strNumero = (String) newC.get("numero");
+        int numero = Integer.parseInt(strNumero);
         String nome = (String) newC.get("nome");
         String apelido = (String) newC.get("apelido");
         String enderecoEmail = (String) newC.get("enderecoEmail");
-        CatalagoColaboradores catColaboradores = new CatalagoColaboradores();
+        //CatalagoColaboradores catColaboradores = new CatalagoColaboradores();
         Colaborador criaC = new Colaborador(numero, nome, apelido, enderecoEmail);
-        
-        //System.out.println(criaC.getNomeColaborador());
+       
         if (criaC == null) {
             System.out.println("Ta vazio");
         }
         listaColaboradores.add(criaC);
 
         JSONArray listaEventos = (JSONArray) newC.get("listaEventos");
-        //criaEvento(criaC, listaEventos);
 
         if (!listaEventos.isEmpty()) {
-            // System.out.println(criaC.getNomeColaborador() + " tem eventos");
             listaEventos.forEach(ev -> {
                 try {
                     criaEvento(criaC, (JSONObject) ev);
@@ -94,9 +84,7 @@ public class File {
 
     }
 
-    private void criaEvento(Colaborador criaC, JSONObject evento) throws java.text.ParseException {
-        
-        // System.out.println(evento);
+    private void criaEvento(Colaborador criaC, JSONObject evento) throws java.text.ParseException {    
         JSONObject appoint = (JSONObject) evento.get("appointement");
         JSONObject meeting = (JSONObject) evento.get("meeting");
 
@@ -106,9 +94,7 @@ public class File {
             String descricaoEvento = (String) appoint.get("descricaoEvento");
 
             String strDataEvento = (String) appoint.get("dataEvento");
-
             DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-
             Date dataEvento = formatter.parse(strDataEvento);
 
             String strHoraEvento = (String) appoint.get("horaEvento");
@@ -119,7 +105,6 @@ public class File {
             String local = (String) appoint.get("local");
 
             Appointment app = new Appointment(idEvento, descricaoEvento, dataEvento, horaEvento, local);
-           // System.out.println("Criou app :" + descricaoEvento);
             criaC.addA(app);
 
         }
@@ -146,31 +131,26 @@ public class File {
 
             metee = new Meeting(idEvento, descricaoEvento, dataEvento, horaEvento, local);
             criaC.addM(metee);
-            //System.out.println("Criou meet :" + descricaoEvento);
             
             //participantess
         JSONArray listPar = (JSONArray) meeting.get("participantes");
-            System.out.println(listPar);
-        for (int i = 0; i < listPar.size(); i++) {
-            
+        for (int i = 0; i < listPar.size(); i++) {       
                 JSONObject participantes = (JSONObject) listPar.get(i);          
                 trataParticipantes(participantes, metee);
             }
-    
         }
-   
     }
     
     public void trataParticipantes(JSONObject part, Meeting meeting){
             
             JSONObject cadaParticipante = (JSONObject) part.get("participante");
-          // System.out.println(cadaParticipante);
-            String strNumero = (String) cadaParticipante.get("numero");
-            int numero = Integer.parseInt(strNumero);
+          //System.out.println(cadaParticipante);
+            //String strNumero = (String) cadaParticipante.get("numero");
+            //int numero = Integer.parseInt(strNumero);
             
             //ir buscar o colaborador com o numero = numero
   
-                meeting.addParticipante(numero);
+               // meeting.addParticipante(numero);
          
             
     }

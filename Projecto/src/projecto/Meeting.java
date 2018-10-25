@@ -30,12 +30,12 @@ public class Meeting extends Eventos {
     public List<Integer> getListaParticipantes(){
         return listaParticipantes;
     }
-    
     public void eliminarParticipante(int par){
         int auxiliar = 0;
         for(int i = 0; i<listaParticipantes.size(); i++){
-            if(listaParticipantes.get(i) == par)
-            auxiliar = i;
+            if(listaParticipantes.get(i) == par){
+                auxiliar = i;
+            }          
         }
         listaParticipantes.remove(auxiliar);
     }
